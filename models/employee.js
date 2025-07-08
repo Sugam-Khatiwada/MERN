@@ -23,6 +23,12 @@ const EmployeeSchema = new mongoose.Schema(
             enum: ['IT','BBA','Resource'],
             required: [true, "Department is required"]
         },
+        role:{
+            type: String,
+            enum: ['Admin', 'Employee', 'HR', 'Intern'],
+            default: 'Employee',
+            required: [true, "Role is required"]
+        },
         createdAt: {
             type: Date,
             default: Date.now,
