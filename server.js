@@ -5,7 +5,7 @@ import userRouter from './routes/user.route.js';
 import employeeRouter from './routes/employee.route.js';
 import authRouter from './routes/auth.route.js';
 import { profileMiddleWare } from './middleware/middleware.js';
-import { verifyUser } from './middleware/verify.token.js';
+import { verifyHR, verifyUser } from './middleware/verify.token.js';
 
 
 const app = express();
@@ -40,6 +40,10 @@ app.get('/profile',profileMiddleWare, (req, res) => {
 app.get('/check',verifyUser, (req, res) => {
   res.status(200).json({
     message: "Yesssssssssss, I am an Employee"})
+});
+app.get('/check-hr',verifyHR, (req, res) => {
+  res.status(200).json({
+    message: "Yesssssssssss, I am an HR"})
 });
 
 app.listen(PORT, () => {

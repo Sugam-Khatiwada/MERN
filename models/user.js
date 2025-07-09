@@ -32,6 +32,9 @@ const UserSchema = new mongoose.Schema(
             default: 'Employee',
             required: [true, "Role is required"]
         },
+        image:{
+            type: String
+        },
         createdAt: {
             type: Date,
             default: Date.now,

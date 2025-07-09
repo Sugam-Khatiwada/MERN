@@ -2,13 +2,15 @@ import bcrypt from 'bcryptjs';
 import {User} from "../models/user.js"
 
 export const createUser = async (req, res) => {
+    console.log(req.file);
     try {
-        const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password, image } = req.body;
         if (
             firstName == "" ||
             lastName == "" ||
             email == "" ||
-            password == ""
+            password == "" ||
+            image== "" 
         ) {
             return res.status(400).send("please fill all the fields");
         }
@@ -27,6 +29,8 @@ export const createUser = async (req, res) => {
             lastName,
             email,
             password: hashedPassword,
+            role,
+            image
         });
 
         await newUser.save();
